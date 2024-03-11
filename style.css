@@ -28,6 +28,25 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  overflow: hidden;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo span:first-child {
+  font-size: 290%;
+  font-family: "Finger Paint", cursive;
+  color: #31c3bd;
+  margin-right: 0.3rem;
+}
+
+.logo span:last-child {
+  font-size: 290%;
+  font-family: "Finger Paint", cursive;
+  color: #f2b137;
 }
 
 .turn {
@@ -54,6 +73,7 @@ nav {
   outline: none;
   border: none;
   box-shadow: 0px 4px rgb(83, 125, 141);
+  cursor: pointer;
 }
 
 .game {
@@ -77,6 +97,7 @@ nav {
   outline: none;
   border: none;
   box-shadow: 0px 5px 2px black;
+  cursor: pointer;
 }
 
 footer {
@@ -97,11 +118,11 @@ footer {
   border: none;
   outline: none;
   font-weight: 500;
-  box-shadow: 0.7px 2px 4px black;
+  box-shadow: 0.7px 2px 8px black;
 }
 
 .X {
-  background-color: #5dc4d1;
+  background-color: #31c3bd;
 }
 
 .Draw {
@@ -109,7 +130,7 @@ footer {
 }
 
 .O {
-  background-color: orange;
+  background-color: #f2b137;
 }
 
 .score {
