@@ -49,31 +49,40 @@ nav {
   color: #f2b137;
 }
 
+.X-text {
+  color: #31c3bd;
+}
+
 .turn {
   background-color: #253446;
+  color: rgb(213, 230, 236);
   height: 2.8rem;
   width: 7rem;
-  border-radius: 10px;
-  font-size: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: rgb(213, 230, 236);
+  font-size: 115%;
+  border-radius: 10px;
   outline: none;
   border: none;
   box-shadow: 0px 4px 2px black;
 }
 
 .reset {
-  background-color: rgb(184, 218, 230);
-  font-size: 100%;
+  background-color: #a8bfc9;
   height: 2.8rem;
   width: 4.7rem;
+  font-size: 105%;
   border-radius: 10px;
   outline: none;
   border: none;
-  box-shadow: 0px 4px rgb(83, 125, 141);
+  box-shadow: 0px 4px rgb(96, 125, 138);
   cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.reset:active {
+  background-color: black;
 }
 
 .game {
@@ -98,6 +107,11 @@ nav {
   border: none;
   box-shadow: 0px 5px 2px black;
   cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.box:active:not(:disabled) {
+  background-color: black;
 }
 
 footer {
@@ -126,7 +140,7 @@ footer {
 }
 
 .Draw {
-  background-color: rgb(184, 176, 176);
+  background-color: #a8bfc9;
 }
 
 .O {
@@ -134,6 +148,6 @@ footer {
 }
 
 .score {
-  font-weight: 800;
-  font-size: 115%;
+  font-weight: 700;
+  font-size: 120%;
 }
