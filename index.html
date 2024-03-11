@@ -9,24 +9,35 @@
   <body>
     <main>
       <nav>
-        <button class="Turn">Turn: X</button>
-        <button class="reset-btn">Reset Game</button>
+        <div class="turn">TURN: X</div>
+        <button class="reset">RESET</button>
       </nav>
+
       <section class="game">
         <button class="box">X</button>
+        <button class="box">O</button>
         <button class="box">X</button>
+        <button class="box">O</button>
         <button class="box">X</button>
+        <button class="box">O</button>
         <button class="box">X</button>
-        <button class="box">X</button>
-        <button class="box">X</button>
-        <button class="box">X</button>
-        <button class="box">X</button>
+        <button class="box">O</button>
         <button class="box">X</button>
       </section>
-      <footer class="scoreboard">
-        <div class="X-score">X (You)</div>
-        <div class="Draw-score">Draw</div>
-        <div class="O-score">O (CPU)</div>
+
+      <footer>
+        <div class="player X">
+          X (You)
+          <span class="score">0</span>
+        </div>
+        <div class="player Draw">
+          Draw
+          <span class="score">0</span>
+        </div>
+        <div class="player O">
+          O (CPU)
+          <span class="score">0</span>
+        </div>
       </footer>
     </main>
   </body>
