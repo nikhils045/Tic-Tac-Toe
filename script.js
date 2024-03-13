@@ -4,6 +4,7 @@ let boxes = document.querySelectorAll(".box");
 let playerScores = document.querySelectorAll(".score");
 
 let currentPlayer = "X";
+let count = 0; // To track Draw
 
 const winPatterns = [
   [0, 1, 2],
@@ -24,12 +25,14 @@ boxes.forEach((box) => {
       box.disabled = true;
       currentPlayer = currentPlayer === "X" ? "O" : "X"; // Switch players with ternary
       msg.textContent = `Turn: ${currentPlayer}`;
+      count++;
+      colorText(box);
     }
-    colorText(box);
     if (checkWinner()) {
       return;
+    } else {
+      checkDraw();
     }
-    checkDraw();
   });
 });
 
@@ -42,6 +45,7 @@ reset.addEventListener("click", () => {
   currentPlayer = "X";
   msg.textContent = `Turn: ${currentPlayer}`;
   msg.style.backgroundColor = "#253446";
+  count = 0;
 });
 
 // Function to Changing the text color of a clicked box
@@ -70,10 +74,11 @@ const checkWinner = () => {
     if (pos1Val != "" && pos2Val != "" && pos3Val != "") {
       if (pos1Val === pos2Val && pos2Val === pos3Val) {
         showWinner(pos1Val);
-        return;
+        return true;
       }
     }
   }
+  return false;
 };
 
 // Showing the Winner and disabling all boxes
@@ -95,14 +100,7 @@ const scoreCount = (winner) => {
 
 // Function to check Draw
 const checkDraw = () => {
-  let isDraw = true;
-  for (let box of boxes) {
-    if (box.textContent === "") {
-      isDraw = false;
-      break; // Exit the loop if an empty box is found
-    }
-  }
-  if (isDraw) {
+  if (count === 9 && !checkWinner()) {
     msg.textContent = "DRAW";
     msg.style.backgroundColor = "rgb(192, 32, 32)";
     playerScores[1].textContent = parseInt(playerScores[1].textContent) + 1;
