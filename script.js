@@ -1,4 +1,4 @@
-let turn = document.querySelector(".turn");
+let msg = document.querySelector(".msg");
 let reset = document.querySelector(".reset");
 let boxes = document.querySelectorAll(".box");
 let playerScores = document.querySelectorAll(".score");
@@ -16,39 +16,52 @@ const winPatterns = [
   [6, 7, 8],
 ];
 
+//  Function to handle click event on each box
 boxes.forEach((box) => {
   box.addEventListener("click", () => {
     if (box.textContent === "") {
       box.textContent = currentPlayer;
       box.disabled = true;
       currentPlayer = currentPlayer === "X" ? "O" : "X"; // Switch players with ternary
-      turn.textContent = `Turn: ${currentPlayer}`;
-      colorText(box);
-      winner(box);
+      msg.textContent = `Turn: ${currentPlayer}`;
     }
+    colorText(box);
+    if (checkWinner()) {
+      return;
+    }
+    checkDraw();
   });
 });
 
+//  Function to handle click event on Reset Button
 reset.addEventListener("click", () => {
   boxes.forEach((box) => {
     box.textContent = "";
     box.disabled = false;
   });
   currentPlayer = "X";
-  turn.textContent = `Turn: ${currentPlayer}`;
+  msg.textContent = `Turn: ${currentPlayer}`;
+  msg.style.backgroundColor = "#253446";
 });
 
-// Different colors for X & O
+// Function to Changing the text color of a clicked box
 const colorText = (box) => {
-  if (box.textContent == "X") {
+  if (box.textContent === "X") {
     box.style.color = "#31c3bd";
   } else {
     box.style.color = "#f2b137";
   }
 };
 
-// Checking the winner by comparing clicked box and Showing the winner/draw message
-const winner = () => {
+// Function to disabling boxes
+const disableBoxes = () => {
+  boxes.forEach((box) => {
+    box.disabled = true;
+  });
+};
+
+// Checking the winner by comparing clicked box
+const checkWinner = () => {
   for (let pattern of winPatterns) {
     let pos1Val = boxes[pattern[0]].innerText;
     let pos2Val = boxes[pattern[1]].innerText;
@@ -56,20 +69,42 @@ const winner = () => {
 
     if (pos1Val != "" && pos2Val != "" && pos3Val != "") {
       if (pos1Val === pos2Val && pos2Val === pos3Val) {
-        turn.textContent = `Winner: ${pos1Val}`;
-        scoreCount();
+        showWinner(pos1Val);
+        return;
       }
     }
   }
 };
 
-const scoreCount = () => {
-  if (turn.textContent === "Winner: X") {
+// Showing the Winner and disabling all boxes
+const showWinner = (winner) => {
+  msg.textContent = `Winner: ${winner}`;
+  msg.style.backgroundColor = "Green";
+  scoreCount(winner);
+  disableBoxes();
+};
+
+// Adding score to Winning Player
+const scoreCount = (winner) => {
+  if (winner === "X") {
     playerScores[0].textContent = parseInt(playerScores[0].textContent) + 1;
-    console.log(playerScores[0].textContent);
-  } else if (turn.textContent === "Winner: O") {
+  } else if (winner === "O") {
     playerScores[2].textContent = parseInt(playerScores[2].textContent) + 1;
-  } else {
+  }
+};
+
+// Function to check Draw
+const checkDraw = () => {
+  let isDraw = true;
+  for (let box of boxes) {
+    if (box.textContent === "") {
+      isDraw = false;
+      break; // Exit the loop if an empty box is found
+    }
+  }
+  if (isDraw) {
+    msg.textContent = "DRAW";
+    msg.style.backgroundColor = "rgb(192, 32, 32)";
     playerScores[1].textContent = parseInt(playerScores[1].textContent) + 1;
   }
 };
