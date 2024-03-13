@@ -27,7 +27,6 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  overflow: hidden;
 }
 
 .logo {
@@ -145,4 +144,63 @@ footer {
 .score {
   font-weight: 700;
   font-size: 120%;
+}
+
+/* RESPONSIVE MEDIA QUERIES */
+@media (max-width: 768px) {
+  .logo span:first-child,
+  .logo span:last-child {
+    font-size: 250%;
+  }
+
+  .msg {
+    width: 5.8rem;
+  }
+
+  .reset {
+    width: 4.3rem;
+    font-size: 100%;
+  }
+
+  .box {
+    height: 5.8rem;
+    width: 5.8rem;
+    font-size: 400%;
+  }
+
+  .player {
+    width: 5.8rem;
+  }
+}
+
+@media (max-width: 320px) {
+  main {
+    padding: 0;
+  }
+
+  .logo span:first-child,
+  .logo span:last-child {
+    font-size: 235%;
+  }
+
+  .msg {
+    height: 2.7rem;
+    width: 5.2rem;
+    font-size: 100%;
+  }
+
+  .reset {
+    height: 2.7rem;
+    width: 3.9rem;
+  }
+
+  .box {
+    height: 5.2rem;
+    width: 5.2rem;
+    font-size: 350%;
+  }
+
+  .player {
+    width: 5.2rem;
+  }
 }
