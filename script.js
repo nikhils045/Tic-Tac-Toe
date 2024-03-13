@@ -16,54 +16,60 @@ const winPatterns = [
   [6, 7, 8],
 ];
 
-const handleBoxClick = (event) => {
-  const box = event.target;
-  if (box.textContent === "") {
-    box.textContent = currentPlayer;
-    box.disabled = true;
-    currentPlayer = currentPlayer === "X" ? "O" : "X"; // Switch players with ternary
-    turn.textContent = `Turn: ${currentPlayer}`;
-  }
-
-  let isWinner = checkWinner();
-
-  if (count === 9 && !isWinner) {
-    gameDraw();
-  }
-};
-
 boxes.forEach((box) => {
-  box.addEventListener("click", handleBoxClick);
+  box.addEventListener("click", () => {
+    if (box.textContent === "") {
+      box.textContent = currentPlayer;
+      box.disabled = true;
+      currentPlayer = currentPlayer === "X" ? "O" : "X"; // Switch players with ternary
+      turn.textContent = `Turn: ${currentPlayer}`;
+      colorText(box);
+      winner(box);
+    }
+  });
 });
 
-const resetGame = () => {
+reset.addEventListener("click", () => {
   boxes.forEach((box) => {
     box.textContent = "";
     box.disabled = false;
   });
   currentPlayer = "X";
   turn.textContent = `Turn: ${currentPlayer}`;
+});
+
+// Different colors for X & O
+const colorText = (box) => {
+  if (box.textContent == "X") {
+    box.style.color = "#31c3bd";
+  } else {
+    box.style.color = "#f2b137";
+  }
 };
 
-reset.addEventListener("click", resetGame);
-
-const showWinner = (winner) => {
-  alert(`Congratulations, Winner is ${winner}`);
-  boxes.disabled = true;
-};
-
-const checkWinner = () => {
+// Checking the winner by comparing clicked box and Showing the winner/draw message
+const winner = () => {
   for (let pattern of winPatterns) {
     let pos1Val = boxes[pattern[0]].innerText;
     let pos2Val = boxes[pattern[1]].innerText;
     let pos3Val = boxes[pattern[2]].innerText;
-    console.log(pattern);
 
     if (pos1Val != "" && pos2Val != "" && pos3Val != "") {
       if (pos1Val === pos2Val && pos2Val === pos3Val) {
-        showWinner(pos1Val);
-        return true;
+        turn.textContent = `Winner: ${pos1Val}`;
+        scoreCount();
       }
     }
+  }
+};
+
+const scoreCount = () => {
+  if (turn.textContent === "Winner: X") {
+    playerScores[0].textContent = parseInt(playerScores[0].textContent) + 1;
+    console.log(playerScores[0].textContent);
+  } else if (turn.textContent === "Winner: O") {
+    playerScores[2].textContent = parseInt(playerScores[2].textContent) + 1;
+  } else {
+    playerScores[1].textContent = parseInt(playerScores[1].textContent) + 1;
   }
 };
