@@ -1,6 +1,7 @@
 # Tic-Tac-Toe
 
-A visually appealing Tic Tac Toe game built with the HTML , CSS and JavaScript.
+This game's modern UI has a clean and attractive design that enhances the game experience. A visually appealing Tic-Tac-Toe game built with HTML, CSS, and JavaScript.
+
 
 ## Features
 
