@@ -8,8 +8,6 @@
 }
 
 body {
-  height: 100vh;
-  width: 100vw;
   background-color: #141e29;
   display: flex;
   justify-content: center;
@@ -18,12 +16,12 @@ body {
 }
 
 main {
+  min-height: 100vh;
+  max-width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-content: center;
-  max-height: 100%;
-  max-width: 100%;
 }
 
 nav {
@@ -177,10 +175,6 @@ footer {
 }
 
 @media (max-width: 320px) {
-  main {
-    padding: 0;
-  }
-
   .logo span:first-child,
   .logo span:last-child {
     font-size: 235%;
