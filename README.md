@@ -14,6 +14,12 @@ This game's modern UI has a clean and attractive design that enhances the game e
 - A convenient Reset button that allows to start a new game anytime.
 - Display the Scores of both Players as well as Draw.
 
+## Tech Stack
+
+- HTML: Defines the structure and content of the page.
+- CSS: Styles the visual appearance of the elements.
+- JavaScript: Adds interactivity and dynamic behaviour.
+
 ## Watch the Live [Demo](https://nikhils045.github.io/Tic-Tac-Toe/)
 
 - Website Link : https://nikhils045.github.io/Tic-Tac-Toe/
